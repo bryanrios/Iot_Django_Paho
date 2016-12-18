@@ -1,0 +1,37 @@
+{% extends 'hwdata/base.html' %}
+{% block title %}Json{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+    {% if current_data %}
+        <h2>Hardware data:</h2>
+        <h3>Storing the latest {{ count }} records:</h3>
+        <table class="table table-condensed table-hover">
+            <thead>
+            <tr class="active">
+                <th>Id</th>
+                <th>Cpu usage [%]</th>
+                <th>Swap usage [%]</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for data in current_data %}
+                <tr>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.CPU_usage }}</td>
+                    <td>{{ data.SWAP_usage }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    {% else %}
+        <h3> No data! </h3>
+    {% endif %}
+
+{% endblock body %}
+
+</div>

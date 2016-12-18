@@ -1,0 +1,27 @@
+{% if AppList %}
+    <h3> Here are all my web applications: </h3>
+
+
+
+    {% for app in AppList %}
+        {% load staticfiles %}
+        <div class="col-md-2 col-lg-2">
+            <div class="thumbnail">
+            <a href="{% url 'hwdata:index' %}"/>
+                <img src="http://icons.iconarchive.com/icons/wineass/ios7-redesign/128/Music-icon.png"
+                     class="img-responsive">
+                <img src="{% static 'website/images/music.png' %}" class="img-responsive">
+
+                </a>
+                <div class="caption">
+                    <h2>{{ app }}</h2>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    {% endfor %}
+{% endif %}

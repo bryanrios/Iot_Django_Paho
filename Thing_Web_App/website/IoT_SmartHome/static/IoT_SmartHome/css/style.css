@@ -1,0 +1,16 @@
+body {
+    background-image: url("../img/white_brick_wall.png")
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+    font-family: 'Satisfy', cursive;
+}
+
+.navbar-inverse {
+    background-color: #122b40;
+    border-color: #122b40;
+}
