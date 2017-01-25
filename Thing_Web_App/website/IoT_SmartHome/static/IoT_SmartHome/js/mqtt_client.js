@@ -1,7 +1,7 @@
 /**
  * Created by Mateusz on 10.12.2016.
  */
-
+var client;
 $(document).ready(function () {
     var j = {"name": "binchen"};
     j = JSON.stringify(j);
@@ -12,7 +12,7 @@ $(document).ready(function () {
     var wsbroker = "m21.cloudmqtt.com";
     var wsport = 39815;
 
-    var client = new Paho.MQTT.Client(wsbroker, wsport, "myclientid_" + parseInt(2));
+    client = new Paho.MQTT.Client(wsbroker, wsport, "myclientid_" + parseInt(2));
 
     function onMessageArrived(ArrivedMessage) {
         var destinationName = ArrivedMessage.destinationName;
@@ -38,13 +38,15 @@ $(document).ready(function () {
         else if (destinationName == '/smarthome/myroom/light') {
 
             var value = 'undefined';
+
             if (message['state'] == 0) { //turn on the toggle button
-                $('#light-toggle-event').bootstrapToggle('on');
-                value = 'HIGH'
+                //$('#light-toggle-event').bootstrapToggle('on');
+                value = 'HIGH';
+                $('#light-img-bulb').attr('src', '../static/IoT_SmartHome/img/yellow_bulb.svg');
             }
             else if (message['state'] == 1) { //turn off the toggle button
-                $('#light-toggle-event').bootstrapToggle('off')
-                value = 'LOW'
+                value = 'LOW';
+                $('#light-img-bulb').attr('src', '../static/IoT_SmartHome/img/black_bulb.svg');
             }
             if (!retained) {
                 $("#logger-container").append(
